@@ -1,0 +1,622 @@
+
+[1;37m╔══════════════════════════════════════════════════════════╗[0m
+[1;37m║    SIMULADOR DE SERVIDOR MMO - SISTEMAS OPERATIVOS     ║[0m
+[1;37m║    UDLAP - Primavera 2026                              ║[0m
+[1;37m║                                                        ║[0m
+[1;37m║    Cupo maximo: 5 jugadores                            ║[0m
+[1;37m║    Jugadores totales: 8 (algunos esperaran)            ║[0m
+[1;37m║    Mapa: 10x10 casillas                                 ║[0m
+[1;37m║    Items iniciales: 6                                  ║[0m
+[1;37m║    Duracion: 12 segundos                                ║[0m
+[1;37m╚══════════════════════════════════════════════════════════╝[0m
+
+[1;32m[SERVER][0m Fase 1: Inicializando estructuras y primitivas...
+[1;32m[SERVER][0m Mundo creado. Mapa 10x10 con 6 items.
+[1;32m[SERVER][0m Semaforo de cupo inicializado con valor 5.
+
+[1;37m=== MAPA DEL MUNDO ===[0m
+   0 1 2 3 4 5 6 7 8 9 
+ 0 [1;33m*[0m . [1;33m*[0m . . . . . . . 
+ 1 . . . . . . . . . . 
+ 2 . . . . . . . . . . 
+ 3 . . . . . . . . . . 
+ 4 . . . . . . . . . . 
+ 5 . . . . . [1;33m*[0m . [1;33m*[0m [1;33m*[0m . 
+ 6 . . . . . . . . . . 
+ 7 . . . . . . . . . . 
+ 8 . . . . . . . . [1;33m*[0m . 
+ 9 . . . . . . . . . . 
+
+[1;32m[SERVER][0m Fase 2: Lanzando hilos de entorno y jugadores...
+[1;32m[SERVER][0m Todos los hilos lanzados. Simulacion en curso...
+[1;32m[SERVER][0m Nota: 8 jugadores competiran por 5 slots de conexion.
+[1;35m[CHAT][0m Hilo de Broadcast/Chat iniciado - Esperando mensajes...
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;33m[WORLD][0m World Thread iniciado - Respawn cada 4 segundos
+[1;36m[JUGADOR 07][0m Solicita conexion al servidor - [1;33msem_wait() en cupo...[0m
+[1;36m[JUGADOR 07][0m [1;32msem_wait() exitoso - CONECTADO[0m (Cupo: 1/5)
+[1;36m[JUGADOR 07][0m Spawn en posicion (9,8)
+[1;36m[JUGADOR 07][0m Movimiento arriba (9,8)->(9,7) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (9,7)...
+[1;36m[JUGADOR 07][0m Posicion actualizada (9,8)->(9,7) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Solicita conexion al servidor - [1;33msem_wait() en cupo...[0m
+[1;36m[JUGADOR 08][0m [1;32msem_wait() exitoso - CONECTADO[0m (Cupo: 2/5)
+[1;36m[JUGADOR 08][0m Spawn en posicion (6,6)
+[1;36m[JUGADOR 08][0m Movimiento arriba (6,6)->(6,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,5)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (6,6)->(6,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 07][0m Movimiento abajo (9,7)->(9,8) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (9,8)...
+[1;36m[JUGADOR 07][0m Posicion actualizada (9,7)->(9,8) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 07][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 07][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 07: "Adios, me desconecto"
+[1;35m[CHAT][0m Mensaje distribuido a 1 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 08][0m Movimiento abajo (6,5)->(6,6) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,6)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (6,5)->(6,6) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Solicita conexion al servidor - [1;33msem_wait() en cupo...[0m
+[1;36m[JUGADOR 02][0m [1;32msem_wait() exitoso - CONECTADO[0m (Cupo: 3/5)
+[1;36m[JUGADOR 02][0m Spawn en posicion (5,2)
+[1;36m[JUGADOR 02][0m Movimiento izquierda (5,2)->(4,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,2)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (5,2)->(4,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Solicita conexion al servidor - [1;33msem_wait() en cupo...[0m
+[1;36m[JUGADOR 04][0m [1;32msem_wait() exitoso - CONECTADO[0m (Cupo: 4/5)
+[1;36m[JUGADOR 04][0m Spawn en posicion (6,2)
+[1;36m[JUGADOR 08][0m Movimiento derecha (6,6)->(7,6) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (7,6)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (6,6)->(7,6) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Solicita conexion al servidor - [1;33msem_wait() en cupo...[0m
+[1;36m[JUGADOR 01][0m [1;32msem_wait() exitoso - CONECTADO[0m (Cupo: 5/5)
+[1;36m[JUGADOR 01][0m Spawn en posicion (4,4)
+[1;36m[JUGADOR 01][0m Movimiento izquierda (4,4)->(3,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (4,4)->(3,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Movimiento izquierda (4,2)->(3,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,2)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (4,2)->(3,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 06][0m Solicita conexion al servidor - [1;33msem_wait() en cupo...[0m
+[1;36m[JUGADOR 06][0m [1;31mSERVIDOR LLENO[0m - Entrando a sala de espera (bloqueado en sem_wait)...
+[1;36m[JUGADOR 01][0m Movimiento derecha (3,4)->(4,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (3,4)->(4,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 05][0m Solicita conexion al servidor - [1;33msem_wait() en cupo...[0m
+[1;36m[JUGADOR 05][0m [1;31mSERVIDOR LLENO[0m - Entrando a sala de espera (bloqueado en sem_wait)...
+[1;36m[JUGADOR 02][0m Movimiento izquierda (3,2)->(2,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (2,2)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (3,2)->(2,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 07][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 07][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 07: "Alguien quiere hacer equipo?"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 08][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 08][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 08: "Hola a todos!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 03][0m Solicita conexion al servidor - [1;33msem_wait() en cupo...[0m
+[1;36m[JUGADOR 03][0m [1;31mSERVIDOR LLENO[0m - Entrando a sala de espera (bloqueado en sem_wait)...
+[1;36m[JUGADOR 04][0m Movimiento derecha (6,2)->(7,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (7,2)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (6,2)->(7,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 01][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 01: "Hola a todos!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 02][0m Movimiento derecha (2,2)->(3,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,2)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (2,2)->(3,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Movimiento arriba (7,6)->(7,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (7,5)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (7,6)->(7,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Intentando recoger 'Pocion' en (7,5) - [1;33mEsperando Mutex del item...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex del item adquirido[0m - Validando existencia de 'Pocion'...
+[1;36m[JUGADOR 08][0m [1;32m** ITEM RECOGIDO **[0m 'Pocion' - Total items: 1
+[1;36m[JUGADOR 08][0m Accion terminada - [1;32mLiberando Mutex del item.[0m
+[1;36m[JUGADOR 04][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 04][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 04: "Vamos al centro del mapa"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 01][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 01][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 01: "Necesito ayuda"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 07][0m Movimiento abajo (9,8)->(9,9) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (9,9)...
+[1;36m[JUGADOR 07][0m Posicion actualizada (9,8)->(9,9) - [1;32mLiberando Mutex.[0m
+[1;32m[SERVER][0m === TICK 1 ===
+
+[1;37m╔══════════════════════════════════════════╗[0m
+[1;37m║        ESTADO DEL SERVIDOR MMO           ║[0m
+[1;37m╠══════════════════════════════════════════╣[0m
+[1;37m║[1;32m Jugadores: 5/5   Items en suelo:  5     [1;37m║[0m
+[1;37m║[1;36m Movimientos:  14  Recolecciones:   1     [1;37m║[0m
+[1;37m║[1;35m Mensajes chat:   6                      [1;37m║[0m
+[1;37m║[1;31m Race conditions evitadas:   0            [1;37m║[0m
+[1;37m╚══════════════════════════════════════════╝[0m
+
+
+[1;37m=== MAPA DEL MUNDO ===[0m
+   0 1 2 3 4 5 6 7 8 9 
+ 0 [1;33m*[0m . [1;33m*[0m . . . . . . . 
+ 1 . . . . . . . . . . 
+ 2 . . . [1;36mP[0m . . . [1;36mP[0m . . 
+ 3 . . . . . . . . . . 
+ 4 . . . . [1;36mP[0m . . . . . 
+ 5 . . . . . [1;33m*[0m . [1;36mP[0m [1;33m*[0m . 
+ 6 . . . . . . . . . . 
+ 7 . . . . . . . . . . 
+ 8 . . . . . . . . [1;33m*[0m . 
+ 9 . . . . . . . . . [1;36mP[0m 
+
+[1;36m[JUGADOR 08][0m Movimiento izquierda (7,5)->(6,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,5)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (7,5)->(6,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Movimiento arriba (3,2)->(3,1) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,1)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (3,2)->(3,1) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento izquierda (7,2)->(6,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,2)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (7,2)->(6,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 08][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 08: "GG bien jugado"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 01][0m Movimiento derecha (4,4)->(5,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (5,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (4,4)->(5,4) - [1;32mLiberando Mutex.[0m
+[1;33m[WORLD][0m [1;33mTiempo de respawn alcanzado[0m - Calculando coordenadas...
+[1;33m[WORLD][0m Intentando casilla (3,8) - [1;33mEsperando Mutex casilla...[0m
+[1;33m[WORLD][0m [1;32mMutex adquirido[0m - 'Elixir+' colocado en (3,8) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento izquierda (6,2)->(5,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (5,2)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (6,2)->(5,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 07][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 07][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 07: "Adios, me desconecto"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 01][0m Movimiento derecha (5,4)->(6,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (5,4)->(6,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 02][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 02: "Necesito ayuda"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 04][0m Movimiento izquierda (5,2)->(4,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,2)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (5,2)->(4,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Movimiento derecha (6,4)->(7,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (7,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (6,4)->(7,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Movimiento abajo (6,5)->(6,6) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,6)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (6,5)->(6,6) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento izquierda (4,2)->(3,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,2)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (4,2)->(3,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Movimiento derecha (6,6)->(7,6) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (7,6)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (6,6)->(7,6) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Movimiento derecha (3,1)->(4,1) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,1)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (3,1)->(4,1) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Movimiento derecha (7,4)->(8,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (7,4)->(8,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento abajo (3,2)->(3,3) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,3)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (3,2)->(3,3) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Movimiento izquierda (4,1)->(3,1) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,1)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (4,1)->(3,1) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 01][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 01: "Encontre una gema!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 08][0m Movimiento izquierda (7,6)->(6,6) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,6)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (7,6)->(6,6) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 04][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 04: "Cuidado con la zona norte"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;32m[SERVER][0m === TICK 2 ===
+
+[1;37m╔══════════════════════════════════════════╗[0m
+[1;37m║        ESTADO DEL SERVIDOR MMO           ║[0m
+[1;37m╠══════════════════════════════════════════╣[0m
+[1;37m║[1;32m Jugadores: 5/5   Items en suelo:  6     [1;37m║[0m
+[1;37m║[1;36m Movimientos:  30  Recolecciones:   1     [1;37m║[0m
+[1;37m║[1;35m Mensajes chat:  11                      [1;37m║[0m
+[1;37m║[1;31m Race conditions evitadas:   0            [1;37m║[0m
+[1;37m╚══════════════════════════════════════════╝[0m
+
+
+[1;37m=== MAPA DEL MUNDO ===[0m
+   0 1 2 3 4 5 6 7 8 9 
+ 0 [1;33m*[0m . [1;33m*[0m . . . . . . . 
+ 1 . . . [1;36mP[0m . . . . . . 
+ 2 . . . . . . . . . . 
+ 3 . . . [1;36mP[0m . . . . . . 
+ 4 . . . . . . . . [1;36mP[0m . 
+ 5 . . . . . [1;33m*[0m . . [1;33m*[0m . 
+ 6 . . . . . . [1;36mP[0m . . . 
+ 7 . . . . . . . . . . 
+ 8 . . . [1;33m*[0m . . . . [1;33m*[0m . 
+ 9 . . . . . . . . . [1;36mP[0m 
+
+[1;36m[JUGADOR 01][0m Movimiento abajo (8,4)->(8,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,5)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (8,4)->(8,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Intentando recoger 'Llave' en (8,5) - [1;33mEsperando Mutex del item...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex del item adquirido[0m - Validando existencia de 'Llave'...
+[1;36m[JUGADOR 01][0m [1;32m** ITEM RECOGIDO **[0m 'Llave' - Total items: 1
+[1;36m[JUGADOR 01][0m Accion terminada - [1;32mLiberando Mutex del item.[0m
+[1;36m[JUGADOR 02][0m Movimiento derecha (3,1)->(4,1) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,1)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (3,1)->(4,1) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Movimiento izquierda (6,6)->(5,6) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (5,6)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (6,6)->(5,6) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento izquierda (3,3)->(2,3) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (2,3)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (3,3)->(2,3) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Movimiento arriba (8,5)->(8,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (8,5)->(8,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 08][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 08: "Hola a todos!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 07][0m Movimiento izquierda (9,9)->(8,9) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,9)...
+[1;36m[JUGADOR 07][0m Posicion actualizada (9,9)->(8,9) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Movimiento abajo (4,1)->(4,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,2)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (4,1)->(4,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Movimiento derecha (8,4)->(9,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (9,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (8,4)->(9,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento abajo (2,3)->(2,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (2,4)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (2,3)->(2,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 07][0m Movimiento arriba (8,9)->(8,8) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,8)...
+[1;36m[JUGADOR 07][0m Posicion actualizada (8,9)->(8,8) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 07][0m Intentando recoger 'Gema' en (8,8) - [1;33mEsperando Mutex del item...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex del item adquirido[0m - Validando existencia de 'Gema'...
+[1;36m[JUGADOR 07][0m [1;32m** ITEM RECOGIDO **[0m 'Gema' - Total items: 1
+[1;36m[JUGADOR 07][0m Accion terminada - [1;32mLiberando Mutex del item.[0m
+[1;36m[JUGADOR 02][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 02][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 02: "Encontre una gema!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 08][0m Movimiento arriba (5,6)->(5,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (5,5)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (5,6)->(5,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Intentando recoger 'Anillo' en (5,5) - [1;33mEsperando Mutex del item...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex del item adquirido[0m - Validando existencia de 'Anillo'...
+[1;36m[JUGADOR 08][0m [1;32m** ITEM RECOGIDO **[0m 'Anillo' - Total items: 2
+[1;36m[JUGADOR 08][0m Accion terminada - [1;32mLiberando Mutex del item.[0m
+[1;36m[JUGADOR 07][0m Movimiento abajo (8,8)->(8,9) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,9)...
+[1;36m[JUGADOR 07][0m Posicion actualizada (8,8)->(8,9) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento abajo (2,4)->(2,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (2,5)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (2,4)->(2,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 02][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 02: "Hola a todos!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 07][0m Movimiento izquierda (8,9)->(7,9) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (7,9)...
+[1;36m[JUGADOR 07][0m Posicion actualizada (8,9)->(7,9) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Movimiento arriba (5,5)->(5,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (5,4)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (5,5)->(5,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 01][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 01: "GG bien jugado"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 07][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 07][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 07: "Vamos al centro del mapa"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;33m[WORLD][0m [1;33mTiempo de respawn alcanzado[0m - Calculando coordenadas...
+[1;33m[WORLD][0m Intentando casilla (0,8) - [1;33mEsperando Mutex casilla...[0m
+[1;33m[WORLD][0m [1;32mMutex adquirido[0m - 'Moneda+' colocado en (0,8) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Movimiento izquierda (5,4)->(4,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,4)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (5,4)->(4,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 07][0m Movimiento izquierda (7,9)->(6,9) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,9)...
+[1;36m[JUGADOR 07][0m Posicion actualizada (7,9)->(6,9) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Movimiento izquierda (9,4)->(8,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (9,4)->(8,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Movimiento abajo (4,4)->(4,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,5)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (4,4)->(4,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Movimiento izquierda (4,2)->(3,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,2)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (4,2)->(3,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Movimiento abajo (8,4)->(8,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,5)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (8,4)->(8,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Movimiento arriba (4,5)->(4,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,4)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (4,5)->(4,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 04][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 04: "Hola a todos!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 07][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 07][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 07][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 07: "Hola a todos!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 08][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 08][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 08: "Alguien quiere hacer equipo?"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 02][0m Movimiento abajo (3,2)->(3,3) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,3)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (3,2)->(3,3) - [1;32mLiberando Mutex.[0m
+[1;32m[SERVER][0m === TICK 3 ===
+
+[1;37m╔══════════════════════════════════════════╗[0m
+[1;37m║        ESTADO DEL SERVIDOR MMO           ║[0m
+[1;37m╠══════════════════════════════════════════╣[0m
+[1;37m║[1;32m Jugadores: 5/5   Items en suelo:  4     [1;37m║[0m
+[1;37m║[1;36m Movimientos:  53  Recolecciones:   4     [1;37m║[0m
+[1;37m║[1;35m Mensajes chat:  19                      [1;37m║[0m
+[1;37m║[1;31m Race conditions evitadas:   0            [1;37m║[0m
+[1;37m╚══════════════════════════════════════════╝[0m
+
+
+[1;37m=== MAPA DEL MUNDO ===[0m
+   0 1 2 3 4 5 6 7 8 9 
+ 0 [1;33m*[0m . [1;33m*[0m . . . . . . . 
+ 1 . . . . . . . . . . 
+ 2 . . . . . . . . . . 
+ 3 . . . [1;36mP[0m . . . . . . 
+ 4 . . . . [1;36mP[0m . . . . . 
+ 5 . . [1;36mP[0m . . . . . [1;36mP[0m . 
+ 6 . . . . . . . . . . 
+ 7 . . . . . . . . . . 
+ 8 [1;33m*[0m . . [1;33m*[0m . . . . . . 
+ 9 . . . . . . [1;36mP[0m . . . 
+
+[1;36m[JUGADOR 08][0m Movimiento abajo (4,4)->(4,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 08][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,5)...
+[1;36m[JUGADOR 08][0m Posicion actualizada (4,4)->(4,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento derecha (2,5)->(3,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,5)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (2,5)->(3,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 02][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 02: "Encontre una gema!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 01][0m Movimiento arriba (8,5)->(8,4) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,4)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (8,5)->(8,4) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 08][0m Iniciando desconexion...
+[1;36m[JUGADOR 08][0m [1;32msem_post() - DESCONECTADO[0m (Cupo: 4/5) Items recogidos: 2
+[1;36m[JUGADOR 06][0m [1;32msem_wait() exitoso - CONECTADO[0m (Cupo: 5/5)
+[1;36m[JUGADOR 06][0m Spawn en posicion (0,9)
+[1;36m[JUGADOR 06][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 06][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 06][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 06: "Necesito ayuda"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 07][0m Iniciando desconexion...
+[1;36m[JUGADOR 07][0m [1;32msem_post() - DESCONECTADO[0m (Cupo: 4/5) Items recogidos: 1
+[1;36m[JUGADOR 05][0m [1;32msem_wait() exitoso - CONECTADO[0m (Cupo: 5/5)
+[1;36m[JUGADOR 05][0m Spawn en posicion (7,3)
+[1;36m[JUGADOR 05][0m Movimiento izquierda (7,3)->(6,3) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 05][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,3)...
+[1;36m[JUGADOR 05][0m Posicion actualizada (7,3)->(6,3) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Movimiento abajo (8,4)->(8,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (8,5)...
+[1;36m[JUGADOR 01][0m Posicion actualizada (8,4)->(8,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Movimiento arriba (3,3)->(3,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,2)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (3,3)->(3,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 06][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 06][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 06][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 06: "Alguien quiere hacer equipo?"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 04][0m Movimiento derecha (3,5)->(4,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,5)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (3,5)->(4,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 06][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 06][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 06][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 06: "Hola a todos!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 04][0m Movimiento derecha (4,5)->(5,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (5,5)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (4,5)->(5,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 01][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 01][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 01: "Hola a todos!"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 05][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 05][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 05][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 05: "Necesito ayuda"
+[1;35m[CHAT][0m Mensaje distribuido a 4 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 02][0m Movimiento arriba (3,2)->(3,1) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,1)...
+[1;36m[JUGADOR 02][0m Posicion actualizada (3,2)->(3,1) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 01][0m Iniciando desconexion...
+[1;36m[JUGADOR 01][0m [1;32msem_post() - DESCONECTADO[0m (Cupo: 4/5) Items recogidos: 1
+[1;36m[JUGADOR 03][0m [1;32msem_wait() exitoso - CONECTADO[0m (Cupo: 5/5)
+[1;36m[JUGADOR 03][0m Spawn en posicion (2,2)
+[1;36m[JUGADOR 03][0m Movimiento derecha (2,2)->(3,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 03][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,2)...
+[1;36m[JUGADOR 03][0m Posicion actualizada (2,2)->(3,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 05][0m Movimiento arriba (6,3)->(6,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 05][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,2)...
+[1;36m[JUGADOR 05][0m Posicion actualizada (6,3)->(6,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento izquierda (5,5)->(4,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (4,5)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (5,5)->(4,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Movimiento abajo (3,1)->(3,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 02][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,2)...
+[1;36m[JUGADOR 02][0m Casilla (3,2) ocupada - [1;32mLiberando Mutex. Movimiento cancelado.[0m
+[1;36m[JUGADOR 05][0m Movimiento abajo (6,2)->(6,3) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 05][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (6,3)...
+[1;36m[JUGADOR 05][0m Posicion actualizada (6,2)->(6,3) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 02][0m Iniciando desconexion...
+[1;36m[JUGADOR 02][0m [1;32msem_post() - DESCONECTADO[0m (Cupo: 4/5) Items recogidos: 0
+[1;36m[JUGADOR 03][0m Movimiento izquierda (3,2)->(2,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 03][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (2,2)...
+[1;36m[JUGADOR 03][0m Posicion actualizada (3,2)->(2,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Movimiento derecha (4,5)->(5,5) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 04][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (5,5)...
+[1;36m[JUGADOR 04][0m Posicion actualizada (4,5)->(5,5) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 04][0m Iniciando desconexion...
+[1;36m[JUGADOR 04][0m [1;32msem_post() - DESCONECTADO[0m (Cupo: 3/5) Items recogidos: 0
+[1;36m[JUGADOR 06][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 06][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 06][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 06: "Encontre una gema!"
+[1;35m[CHAT][0m Mensaje distribuido a 2 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 05][0m Intentando enviar mensaje al chat - [1;33mEsperando Mutex de chat...[0m
+[1;36m[JUGADOR 05][0m [1;32mMutex de chat adquirido[0m - Escribiendo mensaje...
+[1;36m[JUGADOR 05][0m Mensaje enviado - [1;32mLiberando Mutex de chat. Signal enviado.[0m
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Procesando mensaje del Jugador 05: "Alguien quiere hacer equipo?"
+[1;35m[CHAT][0m Mensaje distribuido a 2 jugadores conectados.
+[1;35m[CHAT][0m [1;33mpthread_cond_wait()[0m - Hilo dormido, esperando signal...
+[1;36m[JUGADOR 03][0m Movimiento derecha (2,2)->(3,2) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 03][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (3,2)...
+[1;36m[JUGADOR 03][0m Posicion actualizada (2,2)->(3,2) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 06][0m Movimiento arriba (0,9)->(0,8) - [1;33mSolicitando Mutex casilla destino...[0m
+[1;36m[JUGADOR 06][0m [1;32mMutex casilla adquirido[0m - Verificando casilla (0,8)...
+[1;36m[JUGADOR 06][0m Posicion actualizada (0,9)->(0,8) - [1;32mLiberando Mutex.[0m
+[1;36m[JUGADOR 06][0m Intentando recoger 'Moneda+' en (0,8) - [1;33mEsperando Mutex del item...[0m
+[1;36m[JUGADOR 06][0m [1;32mMutex del item adquirido[0m - Validando existencia de 'Moneda+'...
+[1;36m[JUGADOR 06][0m [1;32m** ITEM RECOGIDO **[0m 'Moneda+' - Total items: 1
+[1;36m[JUGADOR 06][0m Accion terminada - [1;32mLiberando Mutex del item.[0m
+[1;32m[SERVER][0m 
+[1;32m[SERVER][0m ======================================
+[1;32m[SERVER][0m   INICIANDO PROTOCOLO DE APAGADO...
+[1;32m[SERVER][0m ======================================
+[1;32m[SERVER][0m Esperando terminacion de hilos de jugadores (pthread_join)...
+[1;33m[WORLD][0m World Thread terminado.
+[1;35m[CHAT][0m [1;32mVariable de condicion: DESPIERTO[0m - Signal recibido!
+[1;35m[CHAT][0m Hilo de Broadcast/Chat terminado.
+[1;36m[JUGADOR 03][0m Iniciando desconexion...
+[1;36m[JUGADOR 03][0m [1;32msem_post() - DESCONECTADO[0m (Cupo: 2/5) Items recogidos: 0
+[1;36m[JUGADOR 05][0m Iniciando desconexion...
+[1;36m[JUGADOR 05][0m [1;32msem_post() - DESCONECTADO[0m (Cupo: 1/5) Items recogidos: 0
+[1;36m[JUGADOR 06][0m Iniciando desconexion...
+[1;36m[JUGADOR 06][0m [1;32msem_post() - DESCONECTADO[0m (Cupo: 0/5) Items recogidos: 1
+[1;32m[SERVER][0m Todos los hilos de jugadores terminados.
+[1;32m[SERVER][0m Esperando terminacion de hilos de entorno...
+[1;32m[SERVER][0m Hilos de entorno terminados.
+[1;32m[SERVER][0m Hilo de chat terminado.
+[1;32m[SERVER][0m Hilo de game loop terminado.
+
+[1;37m╔══════════════════════════════════════════════════════════╗[0m
+[1;37m║              RESUMEN FINAL DE SIMULACION                ║[0m
+[1;37m╠══════════════════════════════════════════════════════════╣[0m
+[1;37m║[1;36m  Intentos de conexion:            8                     [1;37m║[0m
+[1;37m║[1;31m  Conexiones rechazadas (espera):  3                     [1;37m║[0m
+[1;37m║[1;32m  Movimientos totales:            70                     [1;37m║[0m
+[1;37m║[1;33m  Items recogidos:                 5                     [1;37m║[0m
+[1;37m║[1;35m  Mensajes de chat:               27                     [1;37m║[0m
+[1;37m║[1;31m  Race conditions evitadas:        0                     [1;37m║[0m
+[1;37m╠══════════════════════════════════════════════════════════╣[0m
+[1;37m║  JUGADOR  │ ITEMS │ ESTADO                            ║[0m
+[1;37m║───────────┼───────┼───────────────────────────────────║[0m
+[1;37m║[1;36m  JUG 01   │    1  │ Desconectado                               [1;37m║[0m
+[1;37m║[1;36m  JUG 02   │    0  │ Desconectado                               [1;37m║[0m
+[1;37m║[1;36m  JUG 03   │    0  │ Desconectado                               [1;37m║[0m
+[1;37m║[1;36m  JUG 04   │    0  │ Desconectado                               [1;37m║[0m
+[1;37m║[1;36m  JUG 05   │    0  │ Desconectado                               [1;37m║[0m
+[1;37m║[1;36m  JUG 06   │    1  │ Desconectado                               [1;37m║[0m
+[1;37m║[1;36m  JUG 07   │    1  │ Desconectado                               [1;37m║[0m
+[1;37m║[1;36m  JUG 08   │    2  │ Desconectado                               [1;37m║[0m
+[1;37m╚══════════════════════════════════════════════════════════╝[0m
+
+[1;32m[SERVER][0m Fase 4: Destruyendo primitivas de sincronizacion...
+
+[1;35m[CLEANUP] Todas las primitivas destruidas. Memoria liberada.[0m
+[1;32m[SERVER][0m Simulacion finalizada correctamente. Sin memory leaks.
+
